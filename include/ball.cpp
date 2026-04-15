@@ -6,12 +6,22 @@ Ball::Ball(int startX, int startY, int velocityX, int velocityY){
     y = startY;
 }
 
-// ball position calculation
-void update(){
-    
+void Ball::resetToCenter(){
+    // ball reset (after scoring)
 }
 
-// ball x-Value getter
+void Ball::update(){
+    // ball position calculation
+}
+
+void Ball::bounceX(){
+    // flipping direction horizontally
+}
+
+void Ball::bounceY(){
+    //flipping direction vertically
+}
+
 int Ball::getX() const{
     return x;
 }
@@ -20,3 +30,4 @@ int Ball::getX() const{
 int Ball::getY() const{
     return y;
 }
+

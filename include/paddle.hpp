@@ -9,7 +9,8 @@ private:
     int y;
 
 public:
-    Paddle(int startX, int startY, int size);
+    Paddle(int startX, int startY, int PaddleSize);
+
     void update();
     int getY() const;
 };
