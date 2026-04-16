@@ -3,11 +3,11 @@
 #include "display.hpp"
 #include "conf.hpp"
 
-Potentiometer::Potentiometer(int pinNumber){
+Controller::Controller(int pinNumber){
     pin = pinNumber;
 }
 
-int Potentiometer::getMappedValue() {
+int Controller::getMappedValue() {
     value = analogRead(pin);
     mappedValue = map(value, 0, value, 0, SCREEN_HEIGHT);
     return mappedValue;

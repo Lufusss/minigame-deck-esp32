@@ -6,6 +6,8 @@ class Ball {
 private:
     int x;
     int y;
+    int veloX;
+    int veloY;
 
 public:
     Ball(int startX, int startY, int velocityX, int velocityY);

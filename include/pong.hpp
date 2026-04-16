@@ -1,5 +1,5 @@
 
 
 void gameInit();
-void gameUpdate();
+void pongUpdate();
 void gameRender();

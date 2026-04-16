@@ -5,6 +5,7 @@
 #include "ball.hpp"
 #include "paddle.hpp"
 #include "display.hpp" 
+#include "pong.hpp"
 
 void setup() {
     Serial.begin(9600);
@@ -14,4 +15,5 @@ void setup() {
 }
 
 void loop() {
+    pongUpdate();    
 }

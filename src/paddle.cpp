@@ -1,15 +1,22 @@
 #include "paddle.hpp"
 #include "input_conf.hpp"
+#include "pong.hpp"
 
 Paddle::Paddle(int startX, int startY, int paddleSize){
     wallDistance = startX;
-    y = startY;
     size = paddleSize;
+    upperY = startY;
+    lowerY = upperY + size;
 }
 
-void Paddle::update(){     
+void Paddle::update(int controllerY){     
+   upperY = controllerY;
 }
 
-int Paddle::getY() const{
-    return y;
+int Paddle::getUpperY() const{
+    return upperY;
+}
+
+int Paddle::getLowerY() const {
+    return lowerY;
 }

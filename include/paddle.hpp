@@ -6,13 +6,15 @@ class Paddle {
 private:
     int wallDistance;
     int size;
-    int y;
+    int upperY;
+    int lowerY;
 
 public:
     Paddle(int startX, int startY, int PaddleSize);
 
-    void update();
-    int getY() const;
+    void update(int controllerY);
+    int getUpperY() const;
+    int getLowerY() const;
 };
 
 #endif
