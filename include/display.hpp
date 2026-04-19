@@ -4,6 +4,7 @@
 class myDisplay {
     public:
         myDisplay();
+        void begin();
         void clear();
         void drawPixel(int x, int y);
         void drawPaddle(int x, int upperY, int lowerY);

@@ -1,5 +1,3 @@
-
-
-void gameInit();
+void pongBegin();
 void pongUpdate();
 void pongDrawScreen();

@@ -9,11 +9,14 @@
 Controller L(LEFT_POTI);
 Controller R(RIGHT_POTI);
 
-Paddle LeftPlayer(WALL_DISTANCE, L.getValue(), PADDLE_SIZE);
-Paddle RightPlayer(SCREEN_WIDTH - WALL_DISTANCE, L.getValue(), PADDLE_SIZE);
+Paddle LeftPlayer(WALL_DISTANCE, 0, PADDLE_SIZE);
+Paddle RightPlayer(RIGHT_BORDER - WALL_DISTANCE, 0, PADDLE_SIZE);
 Ball mainBall(0, 0, 1, 1);
 myDisplay oledScreen;
 
+void pongBegin() {
+    oledScreen.begin();
+}
 
 void pongUpdate() {
     LeftPlayer.update(L.getValue());

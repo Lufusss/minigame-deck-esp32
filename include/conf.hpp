@@ -8,7 +8,7 @@ constexpr int LOWER_BORDER =SCREEN_WIDTH -1;
 
 constexpr int PADDLE_SIZE= 6;
 constexpr int WALL_DISTANCE = 10;
-constexpr int LEFT_POTI = 0;
+constexpr int LEFT_POTI = 2;
 constexpr int RIGHT_POTI= 1;
 
 

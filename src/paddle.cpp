@@ -10,7 +10,8 @@ Paddle::Paddle(int startX, int controllerY, int paddleSize){
 }
 
 void Paddle::update(int controllerY){     
-   upperY = controllerY;
+    upperY = controllerY;
+    lowerY = upperY + size;
 }
 
 int Paddle::getX() const {

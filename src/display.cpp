@@ -6,13 +6,19 @@
 
 
 constexpr int OLED_RESET = -1;
-constexpr int SCREEN_ADDRESS = 0X3C;
+constexpr int SCREEN_ADDRESS = 0x3C;
 
 Adafruit_SSD1306 oled(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
+    
 myDisplay::myDisplay() {
-    oled.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS); 
-    oled.clearDisplay();
+}
+
+void myDisplay::begin() {
+    Wire.begin(); 
+    if(!oled.begin(SSD1306_SWITCHCAPVCC, SCREEN_ADDRESS)) {
+        Serial.println("SSD1306 allocation failed");
+        while(true); 
+    }
 }
 
 void myDisplay::clear() {

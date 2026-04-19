@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <Wire.h>
 
 // including header files
 #include "controller.hpp"
@@ -7,11 +8,12 @@
 #include "display.hpp" 
 #include "pong.hpp"
 
+
 void setup() {
     Serial.begin(9600);
     Serial.println("MiniGame Deck - Version 0.99");
-
     millis();
+    pongBegin();
 }
 
 void loop() {
