@@ -23,7 +23,7 @@ void pongUpdate() {
     RightPlayer.update(R.getValue());
     mainBall.update();
     mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
-    //mainBall. bounceX();
+       
 }
 
 void pongDrawScreen() {

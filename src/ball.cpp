@@ -19,9 +19,17 @@ void Ball::update(){
     x += veloX;
 }
 
-void Ball::bounceX(int leftBounceBorder, int rightBounceBorder){
-    if ((x <= leftBounceBorder || x >= rightBounceBorder) && y) {
-        veloX = - veloX;
+void Ball::bounceX(int leftBounceBorder, int rightBounceBorder, int upperY, int lowerY){
+    if (veloX < 0) {
+        if((x == leftBounceBorder + 1) && (y >= upperY) && (y <= lowerY)){
+            veloX = -veloX;
+        }
+        if((x == rightBounceBorder - 1) && (y >= upperY) && (y <= lowerY)){
+            veloX = -veloX;
+        }
+    }
+    if (x >= rightBounceBorder) {
+
     }
 }
 
