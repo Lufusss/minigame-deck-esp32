@@ -34,3 +34,14 @@ void pongDrawScreen() {
     oledScreen.drawPaddle(RightPlayer.getX(), RightPlayer.getUpperY(), RightPlayer.getLowerY());
     oledScreen.update();
 }
+
+void pongKeepScore(int ballX) {
+    static int leftPlayerPoints = 0;
+    static int rightPlayerPoints = 0;
+    if (ballX <= LEFT_BORDER) {
+        rightPlayerPoints +=1;
+    }
+    if (ballX >= RIGHT_BORDER) {
+        leftPlayerPoints += 1;
+    }
+}

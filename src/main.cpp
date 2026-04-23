@@ -7,6 +7,7 @@
 #include "paddle.hpp"
 #include "display.hpp" 
 #include "pong.hpp"
+#include "conf.hpp"
 
 
 void setup() {
@@ -14,9 +15,12 @@ void setup() {
     Serial.println("MiniGame Deck - Version 0.99");
     millis();
     pongBegin();
+    pinMode(BUTTON, INPUT_PULLUP);
 }
 
 void loop() {
-    pongUpdate();    
-    pongDrawScreen();
+    if (!digitalRead(BUTTON)) {
+        pongUpdate();    
+        pongDrawScreen();
+    }
 }

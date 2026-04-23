@@ -10,5 +10,6 @@ constexpr int PADDLE_SIZE= 12;
 constexpr int WALL_DISTANCE = 10;
 constexpr int LEFT_POTI = 2;
 constexpr int RIGHT_POTI= 1;
+constexpr int BUTTON = 5;
 
 
