@@ -9,18 +9,18 @@
 #include "pong.hpp"
 #include "conf.hpp"
 
+Pong game;
 
 void setup() {
     Serial.begin(9600);
     Serial.println("MiniGame Deck - Version 0.99");
     millis();
-    pongBegin();
-    pinMode(BUTTON, INPUT_PULLUP);
+    game.begin();
 }
 
+
 void loop() {
-    if (!digitalRead(BUTTON)) {
-        pongUpdate();    
-        pongDrawScreen();
-    }
+    game.update();
+    game.drawScreen();
+    game.checkScore();
 }

@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <DFRobotDFPlayerMini.h>
 #include "conf.hpp"
 #include "pong.hpp"
 #include "paddle.hpp"
@@ -6,36 +7,41 @@
 #include "ball.hpp"
 #include "display.hpp"
 
-Controller L(LEFT_POTI);
-Controller R(RIGHT_POTI);
 
-Paddle LeftPlayer(WALL_DISTANCE, 0, PADDLE_SIZE);
-Paddle RightPlayer(RIGHT_BORDER - WALL_DISTANCE, 0, PADDLE_SIZE);
-Ball mainBall(0, 0, 1, 1);
-myDisplay oledScreen;
-
-void pongBegin() {
+Pong::Pong()
+    : scoreLeft(0),
+    scoreRight(0),
+    leftController(LEFT_POTI),
+    rightController(RIGHT_POTI),
+    leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
+    rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
+    mainBall(0,0,1,1),
+    oledScreen()
+{}
+void Pong::begin() { 
     oledScreen.begin();
 }
 
-void pongUpdate() {
-    LeftPlayer.update(L.getValue());
-    RightPlayer.update(R.getValue());
+void Pong::update() {
+    leftPaddle.update(leftController.getValue());
+    rightPaddle.update(rightController.getValue());
     mainBall.update();
     mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
-    mainBall.bounceX(LeftPlayer.getX(), LeftPlayer.getUpperY(), LeftPlayer.getLowerY());
-    mainBall.bounceX(RightPlayer.getX(), RightPlayer.getUpperY(), RightPlayer.getLowerY());   
+    mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
+    mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   
 }
 
-void pongDrawScreen() {
+void Pong::drawScreen() {
     oledScreen.clear();
     oledScreen.drawPixel(mainBall.getX(), mainBall.getY());
-    oledScreen.drawPaddle(LeftPlayer.getX(), LeftPlayer.getUpperY(), LeftPlayer.getLowerY());
-    oledScreen.drawPaddle(RightPlayer.getX(), RightPlayer.getUpperY(), RightPlayer.getLowerY());
+    oledScreen.drawPaddle(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
+    oledScreen.drawPaddle(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());
+    //oledScreen.drawScore(scoreLeft, scoreRight);
     oledScreen.update();
 }
 
-void pongKeepScore(int ballX) {
+void Pong::checkScore() {
+    int ballX = mainBall.getX();
     static int leftPlayerPoints = 0;
     static int rightPlayerPoints = 0;
     if (ballX <= LEFT_BORDER) {

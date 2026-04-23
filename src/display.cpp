@@ -37,4 +37,16 @@ void myDisplay::drawPaddle(int x, int upperY, int lowerY) {
     oled.drawLine(x, upperY, x, lowerY, WHITE);
 }
 
+void myDisplay::drawScore(int scoreL, int scoreR) {
+    oled.setTextSize(1);
+    oled.setTextColor(WHITE);
 
+  // Left player
+    oled.setCursor(30, 0);
+    oled.print(scoreL);
+
+    // Right player
+    oled.setCursor(90, 0);
+    oled.print(scoreR);
+    oled.display();
+}
