@@ -2,11 +2,11 @@
 #include "conf.hpp"
 
 // Constructor
-Ball::Ball(int startX, int startY, int velocityX, int velocityY){
-    x = startX;
-    y = startY;
-    veloX = velocityX;
-    veloY = velocityY;
+Ball::Ball(){
+    x = SCREEN_WIDTH / 2;
+    y = SCREEN_HEIGHT / 2;
+    veloX = 1;
+    veloY = 1;
 }
 
 void Ball::resetToCenter(){
@@ -54,18 +54,19 @@ int Ball::getY() const{
 bool Ball::checkScoreLeft() {
     int ballX = x;
     bool leftPlayerScored = 0;
-    bool rightPlayerScored = 0;
-    if (ballX <= LEFT_BORDER) {
-        rightPlayerScored = 1;
-    }
     if (ballX >= RIGHT_BORDER) {
         leftPlayerScored = 1;
     }
     return leftPlayerScored;
-    return rightPlayerScored;
 }
 bool Ball::checkScoreRight() {
+    int ballX = x;
 
+    bool rightPlayerScored = 0;
+    if (ballX <= LEFT_BORDER) {
+        rightPlayerScored = 0;
+    }
+    return rightPlayerScored;
 }
 
 

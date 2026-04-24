@@ -13,7 +13,8 @@ Pong game;
 
 void setup() {
     Serial.begin(9600);
-    Serial.println("MiniGame Deck - Version 0.99");
+    delay(2000);
+    Serial.print("MiniGame Deck - Version 0.99");
     millis();
     pinMode(LEFT, INPUT_PULLUP);
     pinMode(MIDDLE, INPUT_PULLUP);
@@ -28,5 +29,4 @@ void setup() {
 void loop() {
     game.update();
     game.drawScreen();
-    game.addToScore();
 }

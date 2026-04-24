@@ -10,7 +10,7 @@ private:
     int veloY;
 
 public:
-    Ball(int startX, int startY, int velocityX, int velocityY);
+    Ball();
     void resetToCenter();
 
     void update(bool xFlag, bool yFlag);

@@ -2,6 +2,7 @@
 #include "paddle.hpp"
 #include "ball.hpp"
 #include "display.hpp"
+#include "player.hpp"
 
 
 
@@ -17,6 +18,9 @@ class Pong {
 
         Ball mainBall;
         myDisplay oledScreen;
+
+        Player leftPlayer;
+        Player rightPlayer;
 
         enum pongStates{
             MENU,
@@ -37,5 +41,4 @@ class Pong {
         int getScoreLeft() const;
         int getScoreRight() const;
         void throwIn();
-        void addToScore();
 };

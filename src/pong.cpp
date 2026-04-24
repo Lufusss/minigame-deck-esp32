@@ -15,10 +15,14 @@ Pong::Pong()
     rightController(RIGHT_POTI),
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
-    mainBall(0,0,1,1),
+    mainBall(),
     oledScreen(),
-    currentState(MENU)
+    currentState(MENU),
+    leftPlayer(),
+    rightPlayer()
+
 {}
+
 void Pong::begin() { 
     oledScreen.begin();
 }
@@ -34,10 +38,12 @@ void Pong::update() {
         case IN_GAME:
             leftPaddle.update(leftController.getValue());
             rightPaddle.update(rightController.getValue());
-            mainBall.update(1, 1);
+            mainBall.update(true, true);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
             mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   
+            leftPlayer.addToScore(mainBall.checkScoreLeft());
+            rightPlayer.addToScore(mainBall.checkScoreRight());
         break;
 
         case THROW_IN:
@@ -84,7 +90,3 @@ void Pong::throwIn() {
     mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
 }
 
-void Pong::addToScore() {
-    scoreLeft += mainBall.checkScoreLeft();
-    scoreRight += mainBall.checkScoreRight();
-}
