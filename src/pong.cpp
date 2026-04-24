@@ -44,9 +44,21 @@ void Pong::update() {
             mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   
             leftPlayer.addToScore(mainBall.checkScoreLeft());
             rightPlayer.addToScore(mainBall.checkScoreRight());
+            if (mainBall.checkScoreLeft() || mainBall.checkScoreRight()){
+                mainBall.resetToCenter();
+                currentState = THROW_IN;
+            }
         break;
 
         case THROW_IN:
+            if (leftPlayer.getScore() > 4){
+                currentState = LEFT_WINS;
+            }
+            if (rightPlayer.getScore() > 4){
+                currentState = RIGHT_WINS;
+            }
+            leftPaddle.update(leftController.getValue());
+            rightPaddle.update(rightController.getValue());
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             if (!digitalRead(MIDDLE)) {
@@ -55,10 +67,13 @@ void Pong::update() {
         break;
 
         case LEFT_WINS:
-
+            // Insert Bitmap image for left player wins
+            currentState = MENU;
         break;
 
         case RIGHT_WINS:
+        // insert bitmap iage for right player wins
+        currentState = MENU;
         break;
     }
 }
@@ -72,18 +87,6 @@ void Pong::drawScreen() {
     oledScreen.update();
 }
 
-/*void Pong::checkScore() {
-    int ballX = mainBall.getX();
-    static int leftPlayerPoints = 0;
-    static int rightPlayerPoints = 0;
-    if (ballX <= LEFT_BORDER) {
-        rightPlayerPoints +=1;
-    }
-    if (ballX >= RIGHT_BORDER) {
-        leftPlayerPoints += 1;
-    }
-}
-    */
 void Pong::throwIn() {
     mainBall.resetToCenter();
     mainBall.update(0,1);
