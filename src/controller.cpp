@@ -6,7 +6,7 @@ Controller::Controller(int pinNumber){
     pin = pinNumber;
 }
 
-int Controller::getValue() {
+int Controller::getValue() {        //sets value of specified controller
     value = analogRead(pin);
     mappedValue = map(value, 0, 4095, UPPER_BORDER, LOWER_BORDER - PADDLE_SIZE);
     return mappedValue;

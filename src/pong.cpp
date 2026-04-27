@@ -8,6 +8,19 @@
 #include "display.hpp"
 
 
+#define _LOGGING_ON
+#ifdef _LOGGING_ON
+#define LOG_INFO(TAG, VALUE) Serial.print("INFO: "); Serial.print(TAG); Serial.println(VALUE);
+#define LOG_DEBUG(TAG, VALUE) Serial.print("DEBUG: "); Serial.print(TAG); Serial.println(VALUE);
+#define LOG_WARN(TAG, VALUE) Serial.print("WARN: "); Serial.print(TAG); Serial.println(VALUE);
+#define LOG_WARN(TAG, VALUE) Serial.print("WARN: "); Serial.print(TAG); Serial.println(VALUE);
+#else
+#define LOG_INFO(TAG, VALUE)
+#define LOG_DEBUG(TAG, VALUE)
+#define LOG_WARN(TAG, VALUE)
+#define LOG_WARN(TAG, VALUE)
+#endif
+
 Pong::Pong()
     : scoreLeft(0),
     scoreRight(0),
@@ -15,7 +28,7 @@ Pong::Pong()
     rightController(RIGHT_POTI),
     leftPaddle(WALL_DISTANCE, 0, PADDLE_SIZE),
     rightPaddle(RIGHT_BORDER- WALL_DISTANCE, 0, PADDLE_SIZE),
-    mainBall(0,0,1,1),
+    mainBall(),
     oledScreen(),
     currentState(MENU)
 {}
@@ -26,21 +39,24 @@ void Pong::begin() {
 void Pong::update() {
     switch (currentState) {
         case MENU:
+        LOG_DEBUG("State", currentState);
             if(!digitalRead(MIDDLE)) {
                 currentState = IN_GAME;
             }
         break;
 
         case IN_GAME:
+        LOG_DEBUG("State", currentState);
             leftPaddle.update(leftController.getValue());
             rightPaddle.update(rightController.getValue());
-            mainBall.update(1, 1);
+            mainBall.update(true, true);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             mainBall.bounceX(leftPaddle.getX(), leftPaddle.getUpperY(), leftPaddle.getLowerY());
             mainBall.bounceX(rightPaddle.getX(), rightPaddle.getUpperY(), rightPaddle.getLowerY());   
         break;
 
         case THROW_IN:
+        LOG_DEBUG("State", currentState);
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             if (!digitalRead(MIDDLE)) {
@@ -49,10 +65,11 @@ void Pong::update() {
         break;
 
         case LEFT_WINS:
-
+        LOG_DEBUG("State", currentState);
         break;
 
         case RIGHT_WINS:
+        LOG_DEBUG("State", currentState);
         break;
     }
 }

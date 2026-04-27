@@ -5,7 +5,7 @@
 
 
 
-class Pong {
+class Pong {                        //defines Objects needed for the Game Pong
     private:
         int scoreLeft;
         int scoreRight;

@@ -1,4 +1,4 @@
-#ifndef DISPLAY_HPP
+#ifndef DISPLAY_HPP     //headerguard
 #define DISPLAY_HPP
 
 class myDisplay {

@@ -1,4 +1,4 @@
-#include "display.hpp"
+#include "display.hpp"                  //This header functions as a driver for the SSD1306 Display. Game can be used for other displays, just change libary and used functions here
 #include "conf.hpp"
 #include <Wire.h>
 #include <Adafruit_GFX.h>

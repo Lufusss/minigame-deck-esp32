@@ -1,16 +1,17 @@
+#include <Arduino.h>
 #include "ball.hpp"
 #include "conf.hpp"
 
 // Constructor
-Ball::Ball(int startX, int startY, int velocityX, int velocityY){
-    x = startX;
-    y = startY;
-    veloX = velocityX;
-    veloY = velocityY;
+Ball::Ball(){
+    x = SCREEN_WIDTH / 2;
+    y = SCREEN_HEIGHT / 2;
+    veloX = 1;
+    veloY = 1;
 }
 
 void Ball::resetToCenter(){
-    y = SCREEN_HEIGHT / 2;
+    y = random(SCREEN_HEIGHT);
     x = SCREEN_WIDTH / 2;
 }
 

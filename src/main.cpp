@@ -1,3 +1,6 @@
+
+
+
 #include <Arduino.h>
 #include <Wire.h>
 
@@ -12,7 +15,7 @@
 Pong game;
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
     Serial.println("MiniGame Deck - Version 0.99");
     millis();
     pinMode(LEFT, INPUT_PULLUP);

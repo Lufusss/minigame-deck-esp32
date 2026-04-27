@@ -1,7 +1,7 @@
-#ifndef PADDLE_HPP
+#ifndef PADDLE_HPP      //header guard
 #define PADDLE_HPP
 
-class Paddle {
+class Paddle {          //encapsulation
 
 private:
     int wallDistance;
@@ -9,9 +9,8 @@ private:
     int upperY;
     int lowerY;
 
-public:
+public:                 
     Paddle(int startX, int startY, int PaddleSize);
-
     void update(int controllerY);
     int getX() const;
     int getUpperY() const;

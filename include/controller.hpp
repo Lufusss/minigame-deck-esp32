@@ -1,7 +1,7 @@
 #ifndef HARDWARE_CONFIG_HPP
 #define HARDWARE_CONFIG_HPP
 
-class Controller {
+class Controller {                  //defines Object Controller, defining game important variables
     private:
         int value;
         int mappedValue;
