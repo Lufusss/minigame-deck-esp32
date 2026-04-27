@@ -2,6 +2,8 @@
 #include "paddle.hpp"
 #include "ball.hpp"
 #include "display.hpp"
+#include "player.hpp"
+#include "button.hpp"
 
 
 
@@ -18,9 +20,22 @@ class Pong {                        //defines Objects needed for the Game Pong
         Ball mainBall;
         myDisplay oledScreen;
 
+        Player leftPlayer;
+        Player rightPlayer;
+
+        Button tactileStickMiddle;
+        Button tactileStickLeft;
+        Button tactileStickRight;
+        Button tactileStickUp;
+        Button tactileStickDown;
+
+        Button leftButton;
+        Button rightButton;
+
         enum pongStates{
             MENU,
             IN_GAME,
+            PAUSE,
             THROW_IN,
             LEFT_WINS,
             RIGHT_WINS,
@@ -37,5 +52,4 @@ class Pong {                        //defines Objects needed for the Game Pong
         int getScoreLeft() const;
         int getScoreRight() const;
         void throwIn();
-        void addToScore();
 };

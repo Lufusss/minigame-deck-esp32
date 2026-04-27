@@ -55,18 +55,19 @@ int Ball::getY() const{
 bool Ball::checkScoreLeft() {
     int ballX = x;
     bool leftPlayerScored = 0;
-    bool rightPlayerScored = 0;
-    if (ballX <= LEFT_BORDER) {
-        rightPlayerScored = 1;
-    }
     if (ballX >= RIGHT_BORDER) {
         leftPlayerScored = 1;
     }
     return leftPlayerScored;
-    return rightPlayerScored;
 }
 bool Ball::checkScoreRight() {
+    int ballX = x;
 
+    bool rightPlayerScored = 0;
+    if (ballX <= LEFT_BORDER) {
+        rightPlayerScored = 1;
+    }
+    return rightPlayerScored;
 }
 
 
