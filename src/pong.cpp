@@ -20,8 +20,15 @@ Pong::Pong()
     currentState(MENU),
     leftPlayer(),
     rightPlayer(),
-    middleButton(MIDDLE)
 
+    tactileStickMiddle(MIDDLE),
+    tactileStickLeft(LEFT),
+    tactileStickRight(RIGHT),
+    tactileStickUp(UP),
+    tactileStickDown(DOWN),
+
+    leftButton(LEFT_PLAYER_BUTTON),
+    rightButton(RIGHT_PLAYER_BUTTON)
 {}
 
 void Pong::begin() { 
@@ -31,7 +38,7 @@ void Pong::begin() {
 void Pong::update() {
     switch (currentState) {
         case MENU:
-            if(middleButton.isPressed()) {
+            if(tactileStickMiddle.isPressed()) {
                 currentState = IN_GAME;
             }
         break;
@@ -50,13 +57,13 @@ void Pong::update() {
                 currentState = THROW_IN;
             }
             
-            if (middleButton.isPressed()) {
+            if (tactileStickMiddle.isPressed()) {
                 currentState = PAUSE;
             }
         break;
 
         case PAUSE:
-           if (middleButton.isPressed()){
+           if (tactileStickMiddle.isPressed()){
                 currentState = IN_GAME;
            } 
         break;
@@ -77,7 +84,7 @@ void Pong::update() {
             mainBall.update(0, 1);
             mainBall.bounceY(UPPER_BORDER, LOWER_BORDER);
             oledScreen.drawScore(leftPlayer.getScore(), rightPlayer.getScore());
-            if (middleButton.isPressed()) {
+            if (tactileStickMiddle.isPressed()) {
                 currentState = IN_GAME;
             }
         break;

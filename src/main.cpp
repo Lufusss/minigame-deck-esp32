@@ -21,6 +21,9 @@ void setup() {
     pinMode(RIGHT, INPUT_PULLUP);
     pinMode(UP, INPUT_PULLUP);
     pinMode(DOWN, INPUT_PULLUP);
+    pinMode(LEFT_PLAYER_BUTTON, INPUT_PULLUP);
+    pinMode(RIGHT_PLAYER_BUTTON, INPUT_PULLUP);
+    
     
     game.begin();
 }

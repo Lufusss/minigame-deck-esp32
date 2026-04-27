@@ -23,7 +23,14 @@ class Pong {
         Player leftPlayer;
         Player rightPlayer;
 
-        Button middleButton;
+        Button tactileStickMiddle;
+        Button tactileStickLeft;
+        Button tactileStickRight;
+        Button tactileStickUp;
+        Button tactileStickDown;
+
+        Button leftButton;
+        Button rightButton;
 
         enum pongStates{
             MENU,
